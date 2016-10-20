@@ -8,3 +8,6 @@ Level of Interest: <%= @job.level_of_interest %>
 <br>
 
 Company: <%= link_to @job.company.name, company_path(@job.company) %>
+<br>
+
+<%= link_to "Delete Job", company_job_path(@job.company, @job), method: :delete %>
