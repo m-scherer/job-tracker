@@ -1,15 +1,15 @@
 <h3>All Companies</h3>
-
+<div class="company_list">
 <% @companies.each do |company| %>
   <ul class=company_<%= company.id %>>
     <%= link_to company.name, company_path(company) %> - <%= company.city %><br>
+    <ul>
+      <% company.jobs.each do |job| %>
+      <li><%= job.title %></li>
+      <% end %>
+    </ul>
     <%= link_to "Edit", edit_company_path(company) %>
     <%= link_to "Delete", company_path(company), method: "delete" %>
   </ul>
-<% end %>
-
-<% @companies_sort.each do |company| %>
-  <ul class=company_<%= company.id %>>
-    <%= link_to company.name, company_path(company) %> - <%= company.city %><br>
-  </ul>
+</div>
 <% end %>

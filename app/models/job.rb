@@ -26,4 +26,5 @@ class Job < ActiveRecord::Base
     Company.find(k).name
   end
 
+
 end

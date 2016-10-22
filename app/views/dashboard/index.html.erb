@@ -1,4 +1,28 @@
 <h1>Dashboard</h1>
 
-<%= Job.count_level_of_interest %>
-<%= Job.top_3_interest_by_company %>
+<h2>Level of Interest</h2>
+<ul>
+  <% @level_of_interest.each do |interest, count| %>
+  <li>
+    <%= interest %> (<%= count %>)
+  </li>
+  <% end %>
+</ul>
+<h2>3 Most Interesting Companies:</h2>
+<ul>
+  <% @top_three_companies_interest.each do |company| %>
+  <li>
+    <%= company %>
+  </li>
+  <% end %>
+</ul>
+
+
+<h2>Jobs in each City:</h2>
+<ul>
+  <% @companies_location.each do |location, count| %>
+    <li>
+      <%= link_to "#{location}", "#{companies_path}?location=#{location}" %> (<%= count %>)
+    </li>
+  <% end %>
+</ul>

@@ -1,7 +1,12 @@
 class CompaniesController < ApplicationController
   def index
-    @companies = Company.all
-    @companies_sort = @companies.order(city_params)
+    if params[:location].nil?
+      @companies = Company.all.order(city_params)
+    else
+      @city = params[:location]
+      @companies_by_location = Company.where(city:@city)
+      render :companies_by_location
+    end
   end
 
   def new
@@ -54,7 +59,7 @@ class CompaniesController < ApplicationController
   end
 
   def city_params
-    return "city" if params[:sort] == "location"
+    return :city if params[:sort] == "location"
   end
 
 end
