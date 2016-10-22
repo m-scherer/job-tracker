@@ -10,13 +10,12 @@
 </ul>
 <h2>3 Most Interesting Companies:</h2>
 <ul>
-  <% @top_three_companies_interest.each do |company| %>
+  <% @top_three_companies_interest[0..2].each do |company, average| %>
   <li>
-    <%= company %>
+    <%= company %> (<%= average.to_f %>)
   </li>
   <% end %>
 </ul>
-
 
 <h2>Jobs in each City:</h2>
 <ul>
