@@ -26,5 +26,9 @@ class Job < ActiveRecord::Base
     Company.find(k).name
   end
 
+  def self.location_job_count
+      Company.joins(:jobs).group(:city).count
+  end
+
 
 end
