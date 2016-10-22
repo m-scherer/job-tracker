@@ -46,10 +46,10 @@ describe Job do
       expect(Job.count_level_of_interest).to eq(expected)
     end
     it "calculates an average" do
-      company1 = Company.create(name: "The place")
+      company1 = Company.create(name: "The place", city:"here")
       job1 = Job.create(title: "Software", level_of_interest: 100, description: "Wahooo", company: company1)
       job2 = Job.create(title: "Engineering", level_of_interest: 0, description: "Wahooo", company: company1)
-      expected = {company1.id=>50}
+      expected = {company1.name=>50}
 
       expect(Job.get_average_interest).to eq(expected)
     end
@@ -62,9 +62,9 @@ describe Job do
       job2 = Job.create(title: "Engineering", level_of_interest: 90, description: "Wahooo", company: company2)
       job3 = Job.create(title: "Childcare", level_of_interest: 80, description: "Wahooo", company: company3)
       job4 = Job.create(title: "Healthcare", level_of_interest: 1, description: "Wahooo", company: company4)
-      expected = ["#{company1.name}: 100.0", "#{company2.name}: 90.0", "#{company3.name}: 80.0"]
+      expected = [[company1.name, 100.0], [company2.name, 90.0], [company3.name, 80.0]]
 
-      expect(Job.top_3_interest_by_company).to eq(expected)
+      expect(Job.sorted_average_interest[0..2]).to eq(expected)
     end
   end
 

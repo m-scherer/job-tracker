@@ -15,7 +15,6 @@ describe "User sees all companies" do
     company_two = Company.create(name: "Disney", city: "Albany")
 
     visit "#{companies_path}?sort=location"
-    save_and_open_page
 
     within('.company_list > ul') do
       expect(page).to have_content(company_two.name)
