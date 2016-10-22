@@ -1,6 +1,7 @@
 class CompaniesController < ApplicationController
   def index
     @companies = Company.all
+    @companies_sort = @companies.order(city_params)
   end
 
   def new
@@ -51,4 +52,9 @@ class CompaniesController < ApplicationController
   def company_params
     params.require(:company).permit(:name, :city)
   end
+
+  def city_params
+    return "city" if params[:sort] == "location"
+  end
+
 end

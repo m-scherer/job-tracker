@@ -8,7 +8,6 @@ describe 'User can enter a new comment' do
     comment = Comment.new(body: "This is an awesome job")
 
     visit company_job_path(company, job)
-    save_and_open_page
     fill_in "comment[body]", with: comment.body
     click_button "Create Comment"
 

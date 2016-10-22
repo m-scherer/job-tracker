@@ -33,5 +33,9 @@ describe Company do
       company = Company.new(name: "Dropbox", city: "Denver")
       expect(company).to respond_to(:jobs)
     end
+    it "has many contacts" do
+      company = Company.new(name: "Dropbox", city: "Denver")
+      expect(company).to respond_to(:contacts)
+    end
   end
 end

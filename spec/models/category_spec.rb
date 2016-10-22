@@ -17,7 +17,7 @@ describe Category, type: :model do
 
       context "valid attributes" do
         it "is valid with a title" do
-          category = Category.create(title: "Software")
+          category = Category.new(title: "Software")
           expect(category).to be_valid
         end
       end

@@ -4,10 +4,11 @@ class JobsController < ApplicationController
 
   def index
     @jobs = @company.jobs
+    @contacts = Contact.where(company: @company)
   end
 
   def new
-    @job = Job.new()
+    @job = Job.new
   end
 
   def create
