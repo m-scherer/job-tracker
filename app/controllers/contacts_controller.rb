@@ -16,8 +16,27 @@ class ContactsController < ApplicationController
     end
   end
 
-  def show
+  def edit
+    @company = Company.find(params[:company_id])
+    @contact = Contact.find(params[:id])
+  end
 
+  def update
+    @contact = Contact.find(params[:id])
+    @company = Company.find(params[:company_id])
+    if @contact.update(contact_params)
+      flash[:success] = "You updated #{@contact.name} at #{@company.name}"
+      redirect_to company_path(@company)
+    else
+      render :new
+    end
+  end
+
+  def destroy
+    @contact = Contact.find(params[:id])
+    @company = Company.find(params[:company_id])
+    @contact.destroy
+    redirect_to company_path(@company)
   end
 
   private

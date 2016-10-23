@@ -8,6 +8,8 @@ All Jobs for <strong><%= @company.name %></strong>
 <ul>
   <% @contacts.each do |contact| %>
     <li><%= contact.name %> - <%= contact.email %></li>
+    <%= button_to "Edit Contact", edit_company_contact_path(@company, contact), :method=>:get %>
+    <%= button_to "Delete Contact", company_contact_path(@company, contact), :method=>:delete %>
   <% end %>
 </ul>
 <%= button_to "New Contact", new_company_contact_path(@company), method: :get %>

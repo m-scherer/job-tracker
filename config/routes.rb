@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :jobs do
       resources :comments, only: [:create]
     end
-    resources :contacts
+    resources :contacts, only: [:new, :create, :edit, :update, :destroy]
   end
 
   resources :categories
