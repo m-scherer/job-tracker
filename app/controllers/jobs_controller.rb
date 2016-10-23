@@ -1,13 +1,20 @@
 class JobsController < ApplicationController
   before_action :find_job, only: [:show, :edit, :update, :destroy]
-  before_action :find_company, only: [:index, :new, :create, :edit, :update, :destroy]
+  before_action :find_company, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @jobs = @company.jobs
+    if interest_params.nil?
+      @company = Company.find(params[:company_id])
+      @contacts = Contact.where(company: @company)
+      @jobs = @company.jobs
+    else
+      @jobs = Job.order(interest_params).reverse
+      render :all_jobs_sorted
+    end
   end
 
   def new
-    @job = Job.new()
+    @job = Job.new
   end
 
   def create
@@ -55,6 +62,10 @@ class JobsController < ApplicationController
 
   def find_company
     @company = Company.find(params[:company_id])
+  end
+
+  def interest_params
+    return "level_of_interest" if params[:sort] == "interest"
   end
 
 end

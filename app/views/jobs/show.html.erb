@@ -15,3 +15,6 @@ Category: <%= @job.category.title if @job.category %>
 
 <%= link_to "Edit Job", edit_company_job_path(@job.company, @job) %>
 <%= link_to "Delete Job", company_job_path(@job.company, @job), method: :delete %>
+
+<%= render partial: 'comments/form' %>
+<%= render partial: 'jobs/comment', collection: @job.comments.reverse %>

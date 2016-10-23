@@ -5,4 +5,5 @@
     <li> <%= link_to job.title, company_job_path(job.company, job) %> </li>
   <% end %>
 </ul>
-<%= render partial: 'comments/form' %>
+<%= button_to "Edit Category", edit_category_path(@category), method: :get%>
+<%= button_to "Delete Category", category_path(@category), method: :delete %>

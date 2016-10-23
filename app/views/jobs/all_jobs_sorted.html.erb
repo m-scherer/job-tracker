@@ -1,0 +1,8 @@
+<h1>All jobs</h1>
+<ul>
+  <% @jobs.each do |job| %>
+    <li>
+      <%= link_to job.title, company_job_path(job.company, job) %> (<%= job.level_of_interest %>)
+    </li>
+  <% end %>
+</ul>
