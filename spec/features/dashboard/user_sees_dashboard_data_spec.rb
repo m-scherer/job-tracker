@@ -5,10 +5,11 @@ describe 'User sees dashboard data' do
   let!(:company2) { Company.create(name: "to be", city:"Here") }
   let!(:company3) { Company.create(name: "is here", city:"Here") }
   let!(:company4) { Company.create(name: "not here", city:"Here") }
-  let!(:job1) { Job.create(title: "Software", level_of_interest: 100, description: "Wahooo", company: company1) }
-  let!(:job2) { Job.create(title: "Engineering", level_of_interest: 90, description: "Wahooo", company: company2) }
-  let!(:job3) { Job.create(title: "Childcare", level_of_interest: 80, description: "Wahooo", company: company3) }
-  let!(:job4) { Job.create(title: "Healthcare", level_of_interest: 1, description: "Wahooo", company: company4) }
+  let!(:category) { Category.create(title: "Misc") }
+  let!(:job1) { Job.create(title: "Software", level_of_interest: 100, description: "Wahooo", category: category, company: company1) }
+  let!(:job2) { Job.create(title: "Engineering", level_of_interest: 90, description: "Wahooo", category: category, company: company2) }
+  let!(:job3) { Job.create(title: "Childcare", level_of_interest: 80, description: "Wahooo", category: category, company: company3) }
+  let!(:job4) { Job.create(title: "Healthcare", level_of_interest: 1, description: "Wahooo", category: category, company: company4) }
 
   scenario 'user sees level of interest count' do
     visit dashboard_index_path
