@@ -5,3 +5,4 @@
     <li> <%= link_to job.title, company_job_path(job.company, job) %> </li>
   <% end %>
 </ul>
+<%= button_to "Edit Category", edit_category_path(@category), method: :get%>
