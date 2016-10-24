@@ -7,7 +7,7 @@ describe 'User edits a category' do
 
     visit categories_path
     click_on "Software"
-    click_button "Edit Category"
+    click_link "Edit Category"
     fill_in "category[title]", with: new_category.title
     click_on "Update Category"
 

@@ -13,7 +13,6 @@ describe 'User edits an exisiting job' do
     fill_in "job[description]", with: new_job.description
     select 'Misc', from: :category
     click_on "Update Job"
-    save_and_open_page
 
     expect(page).to have_content(new_job.title)
     expect(page).to have_content(new_job.level_of_interest)
