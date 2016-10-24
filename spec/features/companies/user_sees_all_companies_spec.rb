@@ -16,7 +16,7 @@ describe "User sees all companies" do
 
     visit "#{companies_path}?sort=location"
 
-    within('.company_list > ul') do
+    within('.company_list>ul:first-child') do
       expect(page).to have_content(company_two.name)
     end
   end

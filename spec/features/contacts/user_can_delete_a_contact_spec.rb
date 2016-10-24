@@ -6,7 +6,7 @@ describe 'User can edit a contact' do
     contact = Contact.create(name:"Danny Tanner", email:"dan@fullhouse.com", company: company)
 
     visit company_path(company)
-    click_button "Delete Contact"
+    click_link "Delete Contact"
 
     expect(page).to_not have_content(contact.name)
     expect(page).to_not have_content(contact.email)

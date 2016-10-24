@@ -7,7 +7,7 @@ describe 'User can edit a contact' do
     new_contact = Contact.new(name:"Michelle Tanner", email:"michelle@fullhouse.com")
 
     visit company_path(company)
-    click_button "Edit Contact"
+    click_link "Edit Contact"
     fill_in "contact[name]", with: new_contact.name
     fill_in "contact[email]", with: new_contact.email
     click_button "Update Contact"
