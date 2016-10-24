@@ -7,7 +7,9 @@ describe 'User sees only companies in a city' do
     job1 = Job.create(title: "Software", level_of_interest: 100, description: "Wahooo", category: category, company: company)
 
     visit dashboard_index_path
-    click_on "Here"
+    within('#city_jobs') do
+      click_link "Here"
+    end
 
     expect(page).to have_content(company.name)
   end
