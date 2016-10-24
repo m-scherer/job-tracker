@@ -12,6 +12,16 @@
   <nav class="navbar navbar-inverse">
       <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-screenshot"></span>Job<b>Tracker</b></a>
       <ul class='nav navbar-nav'>
+        <li><a href="/jobs?sort=interest">Jobs by Interest Level</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Companies by Location<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/companies?sort=location">Sort All</a></li>
+            <% @locations.each do |location| %>
+              <li><a href="/companies?location=<%= location %>"><%= location %></a></li>
+            <% end %>
+          </ul>
+        </li>
         <li><a href="/dashboard">Dashboard</a></li>
         <li><a href="/categories" >Categories</a></li>
       </ul>
