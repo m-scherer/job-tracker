@@ -1,0 +1,38 @@
+<div class="container-fluid text-center">
+  <h1>Dashboard</h1>
+</div>
+<div class="container-fluid">
+  <div id="level_of_interest" class="col-md-4">
+    <h2 class="text-center">Level of Interest:</h2>
+    <ul class="list-group">
+      <% @level_of_interest.each do |interest, count| %>
+      <li class="list-group-item">
+        <span class="badge"><%= count %></span>
+        <%= interest %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  <div id="interest_companies" class="col-md-4">
+    <h2 class="text-center">Top 3 Highest Average Interest Companies:</h2>
+    <ul class="list-group">
+      <% @top_three_companies_interest[0..2].each do |company, average| %>
+      <li class="list-group-item">
+        <span class="badge"><%= average.to_f %></span>
+        <%= company %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  <div id="city_jobs" class="col-md-4">
+    <h2 class="text-center">Jobs in each City:</h2>
+    <ul class="list-group">
+      <% @companies_location.each do |location, count| %>
+      <li class="list-group-item">
+        <span class="badge"><%= count %></span>
+        <%= link_to "#{location}", "#{companies_path}?location=#{location}" %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

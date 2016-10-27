@@ -1,0 +1,29 @@
+<ol class="breadcrumb">
+  <li>
+    <a href="/categories">Categories</a>
+  </li>
+    <li class="active"><%= @category.title %></li>
+</ol>
+
+<div class="container-fluid text-center">
+  <h1>Category: <%= @category.title %></h1>
+  <%= link_to "Edit Category", edit_category_path(@category), method: :get%>
+</div>
+
+<div class="container-fluid">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Jobs</h3>
+    </div>
+    <div class="panel-body">
+        <div class="list-group">
+          <% @jobs.each do |job| %>
+            <%= link_to job.title, company_job_path(job.company, job), class:"list-group-item" %>
+          <% end %>
+        </div>
+    </div>
+    <div class="panel-footer">
+      <%= button_to "Delete Category", category_path(@category), method: :delete, class:"btn btn-primary" %>
+    </div>
+  </div>
+</div>

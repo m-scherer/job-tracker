@@ -1,0 +1,13 @@
+<h2 class="text-center">New Comment</h2>
+
+<h4 class="text-center">
+  <%= form_for [@job.company, @job, @comment] do |f| %>
+    <div class="container-fluid" style="margin-bottom: 10px">
+      <%= f.label :body, "Comment" %>
+      <%= f.text_area :body %>
+    </div>
+    <div class="container-fluid">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+    <% end %>
+</h4>

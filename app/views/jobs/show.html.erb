@@ -1,10 +1,56 @@
-Title: <%= @job.title %>
+<ol class="breadcrumb">
+  <li><a href="/companies">Companies</a></li>
+  <li><%= link_to @job.company.name, company_path(@job.company) %></li>
+  <li class="active"><%= @job.title %></li>
+</ol>
+<div class="container-fluid text-center col-md-12">
+  <h1><%= @job.title %></h1>
+  <div class="col-md-2"></div>
+  <div class="col-md-2"></div>
+  <div class="col-md-2 text-right">
+    <%= link_to "Edit Job", edit_company_job_path(@job.company, @job) %>
+  </div>
+  <div class="col-md-2 text-left">
+    <%= link_to "Delete Job", company_job_path(@job.company, @job), method: :delete %>
+  </div>
+  <div class="col-md-2"></div>
+  <div class="col-md-2"></div>
+</div>
+<div class="container-fluid">
+  <br>
+  <br>
+</div>
+<div class="container-fluid text-center">
+  <div class="col-md-3">
+    <h3>Description</h3>
+    <p>
+      <%= @job.description %>
+    </p>
+  </div>
+  <div class="col-md-3">
+    <h3>Level of Interest</h3>
+    <p>
+      <%= @job.level_of_interest %>
+    </p>
+  </div>
+  <div class="col-md-3">
+    <h3>Company</h3>
+    <p>
+      <%= link_to @job.company.name, company_path(@job.company) %>
+    </p>
+  </div>
+  <div class="col-md-3">
+    <h3>Category</h3>
+    <p>
+      <%= @job.category.title if @job.category %>
+    </p>
+  </div>
+</div>
 <br>
 
-Description: <%= @job.description %>
-<br>
-
-Level of Interest: <%= @job.level_of_interest %>
-<br>
-
-Company: <%= link_to @job.company.name, company_path(@job.company) %>
+<div class="container-fluid">
+  <%= render partial: 'comments/form' %>
+</div>
+<div class="container-fluid">
+  <%= render partial: 'jobs/comment', collection: @job.comments.reverse %>
+</div>

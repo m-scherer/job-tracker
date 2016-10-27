@@ -1,12 +1,26 @@
-<%= form_for [@company, @job] do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+<div class="container-fluid">
+  <%= form_for [@company, @job] do |f| %>
+  <div class="col-md-3">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="col-md-3">
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+  <div class="col-md-3">
+    <%= f.label :level_of_interest %>
+    <%= f.number_field :level_of_interest %>
+  </div>
 
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-
-  <%= f.label :level_of_interest %>
-  <%= f.number_field :level_of_interest %>
+  <div class="col-md-3">
+    <div class="field">
+      <%= f.label :category %>
+      <%= f.select(:category_id, Category.all.map {|u| [u.title,u.id]}, {prompt: 'Category'}, id: "category") %>
+    </div>
+      <%= link_to "Create New Category", new_category_path %>
+  </div>
 
   <%= f.submit %>
-<% end %>
+  <% end %>
+</div>

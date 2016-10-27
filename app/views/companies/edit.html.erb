@@ -1,3 +1,11 @@
-<h2>Edit <%= @company.name %> here!</h2>
-
+<ol class="breadcrumb">
+  <li>
+    <a href="/companies">Companies</a>
+  </li>
+  <li>
+    <a href="/companies/<%= @company.id %>"><%= @company.name %></a>
+  </li>
+  <li class="active">Edit</li>
+</ol>
+<h2 class="text-center">Edit <%= @company.name %></h2>
 <%= render partial: "form" %>

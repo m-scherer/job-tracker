@@ -1,9 +1,37 @@
-<h3>All Companies</h3>
-
-<% @companies.each do |company| %>
-  <ul class=company_<%= company.id %>>
-    <%= link_to company.name, company_path(company) %> - <%= company.city %><br>
-    <%= link_to "Edit", edit_company_path(company) %>
-    <%= link_to "Delete", company_path(company), method: "delete" %>
-  </ul>
-<% end %>
+<div class="container-fluid">
+  <div class="jumbotron text-center">
+    <h1>Welcome to the Job Tracker</h1>
+    <p>
+      This is a simple application to track your job prospects
+    </p>
+  </div>
+</div>
+<div class="container-fluid text-center" style="magin-bottom:10px">
+  <h3 >Companies Currently Tracked</h3>
+  <%= link_to "Create New Company", new_company_path %>
+</div>
+<div class="container-fluid company_list">
+  <% @companies.each do |company| %>
+    <ul id="companies" class=company_<%= company.id %> >
+      <div class="container-fluid">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4><%= link_to company.name, company_path(company) %></h4>
+            <h5><%= company.city %></h5>
+            <%= link_to "Edit", edit_company_path(company)%>
+          </div>
+          <div class="panel-body">
+            <ul>
+              <% company.jobs.each do |job| %>
+              <li><%= job.title %></li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="panel-footer">
+            <%= button_to "Delete", company_path(company), method: "delete", class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    </ul>
+  <% end %>
+</div>

@@ -3,7 +3,8 @@ require 'rails_helper'
 describe "User sees one company" do
   scenario "a user sees a company" do
     company = Company.create(name: "ESPN", city: "LA")
-    company.jobs.create(title: "Developer", level_of_interest: 90)
+    category = Category.create(title: "misc")
+    company.jobs.create(title: "Developer", level_of_interest: 90, category: category)
 
     visit company_path(company)
 

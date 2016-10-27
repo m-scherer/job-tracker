@@ -1,0 +1,15 @@
+<ol class="breadcrumb">
+  <li>
+    <a href="/companies">Companies</a>
+  </li>
+  <li class="active">Companies in <%= @city %> </li>
+</ol>
+
+  <h1>Companies in <%= @city %></h1>
+  <ul>
+    <% @companies_by_location.each do |company| %>
+    <li>
+      <%= link_to company.name, company_path(company) %>
+    </li>
+    <% end %>
+  </ul>

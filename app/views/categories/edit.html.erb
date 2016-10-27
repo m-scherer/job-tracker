@@ -1,0 +1,15 @@
+<ol class="breadcrumb">
+  <li>
+    <a href="/categories">Categories</a>
+  </li>
+  <li>
+    <a href="/categories/<%= @category.id %>"><%= @category.title %></a>
+  </li>
+  <li class="active">Edit</li>
+</ol>
+
+<div class="container-fluid text-center">
+  <h1>Edit <%= @category.title %></h1>
+</div>
+
+<%= render partial: "form" %>

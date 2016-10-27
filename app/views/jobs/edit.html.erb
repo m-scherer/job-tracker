@@ -1,0 +1,16 @@
+<ol class="breadcrumb">
+  <li>
+    <a href="/companies">Companies</a>
+  </li>
+  <li>
+    <a href="/companies/<%= @company.id %>"><%= @company.name %></a>
+  </li>
+  <li>
+    <a href="/companies/<%= @job.company_id %>/jobs/<%= @job.id %>"><%= @job.title %></a>
+  </li>
+  <li class="active">Edit</li>
+</ol>
+
+<h1 class="text-center">Edit <%= @job.title %> Job</h1>
+
+  <%= render partial: "form" %>

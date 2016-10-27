@@ -1,5 +1,49 @@
-All Jobs for <strong><%= @company.name %></strong>
-
-<% @jobs.each do |job| %>
-  <ul><%= job.title %> at <%= job.company.name %></ul>
-<% end %>
+<ol class="breadcrumb">
+  <li><a href="/companies">Companies</a></li>
+  <li class="active"><%= @company.name %></li>
+</ol>
+<div class="container-fluid">
+  <div class="text-center">
+    <h1><%= @company.name %></h1>
+    <%= link_to "Edit Company", edit_company_path(@company) %>
+  </div>
+</div>
+<br>
+<div class="container-fluid">
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Jobs</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+          <% @jobs.each do |job| %>
+          <li><%= link_to job.title, company_job_path(@company, job) %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="panel-footer">
+        <%= button_to "New Job", new_company_job_path(@company), method: :get, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+<div class="col-md-6">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Contacts</h3>
+    </div>
+    <div class="panel-body">
+      <ul>
+        <% @contacts.each do |contact| %>
+          <li><%= contact.name %> - <%= contact.email %></li>
+          <%= link_to "Edit Contact", edit_company_contact_path(@company, contact), method: :get %>
+          <%= link_to "Delete Contact", company_contact_path(@company, contact), method: :delete %>
+        <% end %>
+      </ul>
+    </div>
+    <div class="panel-footer">
+      <%= button_to "New Contact", new_company_contact_path(@company), method: :get, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
+</div>

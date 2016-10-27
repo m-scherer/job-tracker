@@ -1,0 +1,12 @@
+<div class="container-fluid text-center">
+  <h1>Categories Index</h1>
+  <%= link_to "New Category", new_category_path %>
+</div>
+<br>
+<div class="container-fluid">
+  <div class="list-group">
+    <% @categories.each do |category| %>
+      <%= link_to category.title, category_path(category), class:"list-group-item" %>
+    <% end %>
+  </div>
+</div>

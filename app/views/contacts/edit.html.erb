@@ -1,0 +1,15 @@
+<ol class="breadcrumb">
+  <li>
+    <a href="/companies">Companies</a>
+  </li>
+  <li>
+    <a href="/companies/<%= @company.id %>"><%= @company.name %></a>
+  </li>
+    <li class="active"><%= @contact.name %></li>
+</ol>
+
+<div class="container-fluid text-center">
+  <h1><%= @contact.name %></h1>
+</div>
+
+<%= render partial: "form" %>
