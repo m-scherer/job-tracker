@@ -5,8 +5,8 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(comment_params)
-    @comment.job = Job.find(params[:job_id])
+    job = Job.find(params[:job_id])
+    @comment = job.comments.new(comment_params)
 
     @comment.save
 
@@ -14,7 +14,6 @@ class CommentsController < ApplicationController
   end
 
   def show
-    byebug
     @comment = Comment.find(params[:id])
   end
 

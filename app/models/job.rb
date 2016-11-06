@@ -5,11 +5,11 @@ class Job < ActiveRecord::Base
   has_many :comments
 
   def self.count_level_of_interest
-    Job.group(:level_of_interest).count
+    group(:level_of_interest).count
   end
 
   def self.get_average_interest
-    Job.joins(:company).group(:name).average(:level_of_interest)
+    joins(:company).group(:name).average(:level_of_interest)
   end
 
   def self.sorted_average_interest

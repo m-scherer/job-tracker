@@ -14,4 +14,16 @@ describe 'User can enter a new comment' do
     expect(current_path).to eq("/companies/#{company.id}/jobs/#{job.id}")
     expect(page).to have_content(comment.body)
   end
+  # scenario "user can't save a comment without a body" do
+  #   company = Company.create(name: "ESPN", city: "NYC")
+  #   category = Category.create(title:"Software")
+  #   job = Job.create(title: "Developer", level_of_interest: 999, description: "write code", company: company, category: category)
+  #   comment = Comment.new
+  #
+  #   visit company_job_path(company, job)
+  #   click_button "Create Comment"
+  #
+  #   expect(page).to have_content('404')
+  # end
+
 end
