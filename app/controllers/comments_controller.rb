@@ -8,9 +8,11 @@ class CommentsController < ApplicationController
     job = Job.find(params[:job_id])
     @comment = job.comments.new(comment_params)
 
-    @comment.save
-
-    redirect_to company_job_path(@comment.job.company ,@comment.job)
+    if @comment.save
+      redirect_to company_job_path(@comment.job.company ,@comment.job)
+    else
+      render :show
+    end
   end
 
   def show
