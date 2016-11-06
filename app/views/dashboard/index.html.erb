@@ -16,7 +16,7 @@
   <div id="interest_companies" class="col-md-4">
     <h2 class="text-center">Top 3 Highest Average Interest Companies:</h2>
     <ul class="list-group">
-      <% @top_three_companies_interest[0..2].each do |company, average| %>
+      <% @top_three_companies_interest.each do |company, average| %>
       <li class="list-group-item">
         <span class="badge"><%= average.to_f %></span>
         <%= company %>

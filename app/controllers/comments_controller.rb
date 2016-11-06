@@ -5,16 +5,17 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(comment_params)
-    @comment.job = Job.find(params[:job_id])
+    job = Job.find(params[:job_id])
+    @comment = job.comments.new(comment_params)
 
-    @comment.save
-
-    redirect_to company_job_path(@comment.job.company ,@comment.job)
+    if @comment.save
+      redirect_to company_job_path(@comment.job.company ,@comment.job)
+    else
+      render :show
+    end
   end
 
   def show
-    byebug
     @comment = Comment.find(params[:id])
   end
 
